@@ -2,5 +2,10 @@
 function soma(a, b) {
     return a + b;
   }
-  module.exports = soma;
+  
+  function multiplicacao(a, b) {
+    return a * b;
+  }
+  
+  module.exports = { soma, multiplicacao };
   
