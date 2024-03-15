@@ -1,0 +1,38 @@
+name: Lead Time Measurement
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    # Adicione aqui os passos para construir seu projeto
+
+    - name: Deploy to Production
+      run: |
+        echo "Deploying..."
+        # Adicione seu comando de implantação aqui
+        # Por exemplo, usar um script de deploy ou ferramenta CLI
+
+    - name: Record Deployment Time
+      uses: actions/github-script@v3
+      with:
+        script: |
+          const moment = require('moment');
+          const timeNow = moment().toISOString();
+          core.setOutput("deployment_time", timeNow);
+          console.log("Deployment time:", timeNow);
+
+    - name: Store Lead Time Data
+      run: |
+        echo "Storing lead time data..."
+        # Aqui, você pode inserir um comando para enviar o tempo de implantação
+        # para um banco de dados ou serviço de monitoramento externo.
+        # Você precisará do tempo de commit, que pode ser o horário atual menos
+        # a duração do workflow, e o tempo de implantação que acabou de ser registrado.
