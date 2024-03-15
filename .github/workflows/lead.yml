@@ -3,7 +3,7 @@ name: Lead Time Measurement
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-deploy:
